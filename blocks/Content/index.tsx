@@ -1,6 +1,6 @@
 import React from 'react';
 import { Block } from 'payload/types';
-import RichText from '../../components/RichText';
+// import RichText from '../../components/RichText';
 import classes from './index.module.css';
 
 export type Type = {
@@ -18,7 +18,7 @@ export const Content: Block = {
   fields: [
     {
       name: 'content',
-      type: 'richText',
+      type: 'text',
     },
   ],
 };
@@ -28,10 +28,10 @@ export const Component: React.FC<Type> = (props) => {
 
   return (
     <div className={classes.wrap}>
-      <RichText
+      {/* <RichText
         content={content}
         className={classes.content}
-      />
+      /> */}
     </div>
   );
 };

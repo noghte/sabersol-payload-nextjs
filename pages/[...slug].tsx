@@ -2,8 +2,11 @@ import React from 'react';
 import payload from 'payload';
 import { GetServerSideProps } from 'next';
 import getConfig from 'next/config';
+import { NextResponse } from 'next/server';
 import { Type as PageType } from '../collections/Page';
 import NotFound from '../components/NotFound';
+import Home from '../components/Home';
+
 import Head from '../components/Head';
 import classes from '../css/page.module.css';
 import RenderBlocks from '../components/RenderBlocks';
@@ -13,13 +16,14 @@ const { publicRuntimeConfig: { SERVER_URL } } = getConfig();
 export type Props = {
   page?: PageType
   statusCode: number
+  isHome?: boolean
 }
 
 const Page: React.FC<Props> = (props) => {
   const { page } = props;
 
   if (!page) {
-    return <NotFound />;
+    return props.isHome? <Home /> : <NotFound />;
   }
 
   return (
@@ -60,8 +64,10 @@ const Page: React.FC<Props> = (props) => {
 export default Page;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const slug = ctx.params?.slug ? (ctx.params.slug as string[]).join('/') : 'home';
-
+  const slug = ctx.params?.slug ? (ctx.params.slug as string[]).join('/') : '/';
+  if (slug === '/') {
+    return { props: { isHome: true, statusCode: 200 } };
+  }
   const pageQuery = await payload.find({
     collection: 'pages',
     where: {
