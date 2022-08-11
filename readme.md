@@ -1,11 +1,18 @@
 
 # The sabersol.com website
 
-Powered by [Payload](https://payloadcms.com/) headless CMS
+Powered by [Payload](https://payloadcms.com/) headless CMS.
 
 ---
-Source: https://github.com/noghte/sabersol-payload-nextjs
-Original Source: https://github.com/payloadcms/nextjs-custom-server
+> Source: https://github.com/noghte/sabersol-payload-nextjs
+> Original Source: https://github.com/payloadcms/nextjs-custom-server
+---
+
+Added: 
+- custom Home component
+- tailwind css
+
+
 ## Payload + NextJS Server-Rendered TypeScript Boilerplate
 
 

@@ -23,7 +23,8 @@ const Page: React.FC<Props> = (props) => {
   const { page } = props;
 
   if (!page) {
-    return props.isHome? <Home /> : <NotFound />;
+    const { isHome } = props;
+    return isHome ? <Home /> : <NotFound />;
   }
 
   return (
